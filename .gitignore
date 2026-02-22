@@ -36,6 +36,7 @@
 *.exe
 *.out
 *.app
+planificar-empleados
 
 # debug information files
 *.dwo
