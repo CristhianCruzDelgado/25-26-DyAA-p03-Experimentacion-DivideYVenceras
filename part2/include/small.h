@@ -14,9 +14,12 @@
 #ifndef SMALL_H_
 #define SMALL_H_
 
+#include "instance.h"
+
 class Small {
  public:
- private:
+  virtual ~Small() = default;
+  virtual bool small(const Instance*) const = 0;
 };
 
 #endif

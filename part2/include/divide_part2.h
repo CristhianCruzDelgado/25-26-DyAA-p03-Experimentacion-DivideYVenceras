@@ -11,19 +11,17 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef DIVIDE_H_
-#define DIVIDE_H_
+#ifndef DIVIDE_PART2_H_
+#define DIVIDE_PART2_H_
 
-#include "instance.h"
+#include "divide.h"
 
-#include <utility>
-
-using InstanceHalves = std::pair<Instance*, Instance*>;
-
-class Divide {
+class DividePart2 : public Divide {
  public:
-  virtual ~Divide() = default;
-  virtual InstanceHalves& divide(const Instance*, const int&) const = 0;
+  DividePart2() = default;
+  InstanceHalves& divide(const Instance* I, const int& size) const override {
+
+  }
 };
 
 #endif

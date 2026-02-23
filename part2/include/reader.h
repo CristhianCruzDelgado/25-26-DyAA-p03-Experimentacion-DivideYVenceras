@@ -14,7 +14,7 @@
 #ifndef READER_H_
 #define READER_H_
 
-#include "instance.h"
+#include "instance_part2.h"
 
 #include <fstream>
 #include <string>
@@ -27,7 +27,7 @@ class Reader {
   Reader() {}
   ~Reader() {}
   
-  Instance loadFile(const std::string& path) const {
+  Instance* loadFile(const std::string& path) const {
     std::ifstream file(path);
     if (!file.is_open()) throw std::runtime_error("Bad input file: " + path);
 
@@ -36,30 +36,30 @@ class Reader {
     int numE = j["employees"].get<int>();
     int numD = j["planningHorizon"].get<int>();
     int numS = j["shifts"].get<int>();
-    Instance I(numE, numD, numS);
+    Instance* I = new InstancePart2(numE, numD, numS);
     std::vector<Employee> employees(numE, "");
     std::vector<Shift> shifts(numS, "");
 
     const auto& empJson = j["employees"];
     for (int e = 0; e < numE; ++e) {
-      int value = descJson[e]["freeDays"].get<int>();
-      I.setC(e, value);
-      Employee employee = empJson[s]["name"].get<Employee>();
+      int value = empJson[e]["freeDays"].get<int>();
+      I->setC(e, value);
+      Employee employee = empJson[e]["name"].get<Employee>();
       employees.push_back(employee);
     }
-    I.setE(employees);
+    I->setE(employees);
     const auto& shiJson = j["shifts"];
     for (int s = 0; s < numS; ++s) {
       Shift shift = shiJson[s].get<Shift>();
       shifts.push_back(shift);
     }
-    I.setS(shifts);
+    I->setS(shifts);
     const auto& satJson = j["satisfaction"];
     for (int e = 0; e < numE; ++e) {
       for (int d = 0; d < numD; ++d) {
         for (int s = 0; s < numS; ++s) {
           int value = satJson[e][d][s].get<int>();
-          I.setA(e, d, s, value);
+          I->setA(e, d, s, value);
         }
       }
     }
@@ -67,14 +67,12 @@ class Reader {
     for (int d = 0; d < numD; ++d) {
       for (int s = 0; s < numS; ++s) {
         int value = reqJson[d][s].get<int>();
-        I.setB(d, s, value);
+        I->setB(d, s, value);
       }
     }
     
     return I;
   }
-
- private:
 };
 
 #endif

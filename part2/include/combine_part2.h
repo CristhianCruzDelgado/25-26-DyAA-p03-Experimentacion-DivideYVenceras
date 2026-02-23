@@ -11,19 +11,17 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef DIVIDE_H_
-#define DIVIDE_H_
+#ifndef COMBINE_PART2_H_
+#define COMBINE_PART2_H_
 
-#include "instance.h"
+#include "combine.h"
 
-#include <utility>
-
-using InstanceHalves = std::pair<Instance*, Instance*>;
-
-class Divide {
+class CombinePart2 : public Combine {
  public:
-  virtual ~Divide() = default;
-  virtual InstanceHalves& divide(const Instance*, const int&) const = 0;
+  CombinePart2() = default;
+  Solution* combine(const Solution* I1, const Solution* I2) const override {
+
+  }
 };
 
 #endif

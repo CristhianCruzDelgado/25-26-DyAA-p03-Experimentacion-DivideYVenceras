@@ -14,9 +14,13 @@
 #ifndef SOLVE_SMALL_H_
 #define SOLVE_SMALL_H_
 
+#include "instance.h"
+#include "solution.h"
+
 class SolveSmall {
  public:
- private:
+  virtual ~SolveSmall() = default;
+  virtual Solution* solveSmall(const Instance*) const = 0;
 };
 
 #endif

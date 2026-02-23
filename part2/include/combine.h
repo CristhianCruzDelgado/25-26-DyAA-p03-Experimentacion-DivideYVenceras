@@ -14,9 +14,12 @@
 #ifndef COMBINE_H_
 #define COMBINE_H_
 
+#include "solution.h"
+
 class Combine {
  public:
- private:
+  virtual ~Combine() = default;
+  virtual Solution* combine(const Solution*, const Solution*) const = 0;
 };
 
 #endif
