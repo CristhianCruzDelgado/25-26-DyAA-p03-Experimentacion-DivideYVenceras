@@ -11,27 +11,26 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef SOLUTION_H_
-#define SOLUTION_H_
+#ifndef SOLUTION_PART2_H_
+#define SOLUTION_PART2_H_
 
 #include "instance_part2.h"
 #include "solution.h"
 
+#include <fstream>
+#include <string>
 #include <vector>
+#include <nlohmann/json.hpp>
 
-class SolutionPart2 {
+using json = nlohmann::json;
+
+class SolutionPart2 : public Solution {
  public:
-  SolutionPart2(const InstancePart2& I) {
-    assignment_.resize(I.getNumE(), std::vector<std::vector<bool>>(I.getNumD(), std::vector<bool>(I.getNumS(), false)));
-    objectiveValue_ = 0.0;
-  }
-  ~SolutionPart2() {}
-
-  bool getAssignment(int e, int d, int s) const { return assignment_[e][d][s]; }
-  const double getObjectiveValue() const { return objectiveValue_; }
+  SolutionPart2() = default;
+  ~SolutionPart2() = default;
 
   double calculateSatisfaction(const InstancePart2& I) const {
-    double total = 0.0;
+    double sum_s = 0.0;
     int E = I.getNumE();
     int D = I.getNumD();
     int S = I.getNumS();
@@ -39,14 +38,13 @@ class SolutionPart2 {
       for (int d = 0; d < D; ++d) {
         for (int s = 0; s < S; ++s) {
           if (assignment_[e][d][s]) {
-            total += I.getA(e, d, s);
+            sum_s += I.getA(e, d, s);
           }
         }
       }
     }
-    return total;
+    return sum_s;
   }
-
   int countCoveredShifts(const InstancePart2& I) const {
     int count_s = 0;
     int D = I.getNumD();
@@ -63,15 +61,23 @@ class SolutionPart2 {
     }
     return count_s;
   }
-
-  void objectiveFunction(const InstancePart2& I) {
-    objectiveValue_ = calculateSatisfaction(I) + countCoveredShifts(I) * 100.0;
+  double objectiveFunction(const InstancePart2& I) const {
+    return calculateSatisfaction(I) + countCoveredShifts(I) * 100.0;
   }
+  void saveFile(const std::string&) const override;
 
  private:
   // x[e][d][s] = 1 if employee e works on day d for shift s, 0 otherwise
   std::vector<std::vector<std::vector<bool>>> assignment_;  
-  double objectiveValue_;
 };
+
+void SolutionPart2::saveFile(const std::string& path) const {
+  std::ofstream file(path);
+  if (!file.is_open()) {
+    throw std::runtime_error("Bad output file: " + path);
+  }
+
+  // Por acabar
+}
 
 #endif

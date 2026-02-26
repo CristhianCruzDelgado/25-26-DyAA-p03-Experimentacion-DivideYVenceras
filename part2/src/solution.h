@@ -11,12 +11,15 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef WRITER_H_
-#define WRITER_H_
+#ifndef SOLUTION_H_
+#define SOLUTION_H_
 
-class Writer {
+#include <string>
+
+class Solution {
  public:
- private:
+  virtual ~Solution() = default;
+  virtual void saveFile(const std::string&) const = 0;
 };
 
 #endif

@@ -11,12 +11,16 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef SOLUTION_H_
-#define SOLUTION_H_
+#ifndef INSTANCE_H_
+#define INSTANCE_H_
 
-class Solution {
+#include <string>
+
+class Instance {
  public:
-  virtual ~Solution() = default;
+  virtual ~Instance() = default;
+  virtual const int getSize() const = 0;
+  virtual void loadFile(const std::string&) = 0;
 };
 
 #endif

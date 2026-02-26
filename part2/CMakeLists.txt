@@ -12,7 +12,7 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # Source files
 set(SOURCES
-    src/main.cpp
+    src/main.cc
 )
 
 # Executable

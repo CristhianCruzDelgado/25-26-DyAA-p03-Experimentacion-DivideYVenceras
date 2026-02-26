@@ -17,19 +17,22 @@
 #include "combine_part2.h"
 #include "divide_conquer.h"
 #include "divide_part2.h"
+#include "instance.h"
 #include "small_part2.h"
 #include "solve_small_part2.h"
 
 class DivideConquerPart2 : public DivideConquer {
  public:
   DivideConquerPart2() = default;
-  Solution* solve(const Instance* I) const override {
+  ~DivideConquerPart2() = default;
+  
+  Solution* solve(const Instance* I) override {
     Combine* a = new CombinePart2;
     Divide* b = new DividePart2;
     Small* c = new SmallPart2;
     SolveSmall* d = new SolveSmallPart2;
     this->setStrategy(a, b, c, d);
-    return this->solve(I, I.getSize());
+    return DivideConquer::solve(I, I->getSize());
   }
 };
 
