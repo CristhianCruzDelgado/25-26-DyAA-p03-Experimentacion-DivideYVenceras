@@ -76,8 +76,42 @@ void SolutionPart2::saveFile(const std::string& path) const {
   if (!file.is_open()) {
     throw std::runtime_error("Bad output file: " + path);
   }
+  json j;
 
-  // Por acabar
+  int E = assignment_.size();
+  int D = assignment_[0].size();
+  int S = assignment_[0][0].size();
+  j["employees"] = E;
+  j["days"] = D;
+  j["shifts"] = S;
+
+  j["assignment"] = json::array();
+  for (int e = 0; e < E; ++e) {
+    json days = json::array();
+    for (int d = 0; d < D; ++d) {
+      json shifts = json::array();
+      for (int s = 0; s < S; ++s) {
+        shifts.push_back(assignment_[e][d][s]);
+      }
+      days.push_back(shifts);
+    }
+    j["assignment"].push_back(days);
+  }
+  j["active_assignments"] = json::array();
+  for (int e = 0; e < E; ++e) {
+    for (int d = 0; d < D; ++d) {
+      for (int s = 0; s < S; ++s) {
+        if (assignment_[e][d][s]) {
+          j["active_assignments"].push_back({
+            {"employee", e},
+            {"day", d},
+            {"shift", s}
+          });
+        }
+      }
+    }
+  }
+  file << j.dump(2);
 }
 
 #endif

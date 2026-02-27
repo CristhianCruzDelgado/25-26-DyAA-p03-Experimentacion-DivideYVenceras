@@ -22,7 +22,6 @@
 #include <nlohmann/json.hpp>
 
 using json = nlohmann::json;
-
 using Employee = std::string;
 using Shift = std::string;
 
@@ -30,7 +29,7 @@ class InstancePart2 : public Instance {
  public:
   InstancePart2() = default;
   ~InstancePart2() = default;
-  
+
   const int getSize() const { return D_; }
   const Employee& getE(int e) const { return E_[e]; }
   const int getNumE() const { return E_.size(); }

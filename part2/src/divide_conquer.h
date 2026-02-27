@@ -14,53 +14,36 @@
 #ifndef DIVIDE_CONQUER_H_
 #define DIVIDE_CONQUER_H_
 
-#include "combine.h"
-#include "divide.h"
-#include "instance.h"
-#include "small.h"
-#include "solution.h"
-#include "solve_small.h"
+#include <utility>
+
+using InstanceHalves = std::pair<Instance*, Instance*>;
+
+class Instance;
+class Solution;
 
 class DivideConquer {
  public:
-  DivideConquer() : 
-    combine_(nullptr),
-    divide_(nullptr),
-    small_(nullptr),
-    solve_small_(nullptr) {}
-  virtual ~DivideConquer() {
-    delete combine_;
-    delete divide_;
-    delete small_;
-    delete solve_small_;
-  }
-  virtual Solution* solve(const Instance* I) = 0;
+  virtual ~DivideConquer() = default;
+  
   Solution* solve(const Instance*, const int&) const;
-  void setStrategy(Combine* a, 
-                   Divide* b, 
-                   Small* c, 
-                   SolveSmall* d) {
-    combine_ = a;
-    divide_ = b;
-    small_ = c;
-    solve_small_ = d;
-  }
 
- private:
-  Combine* combine_;
-  Divide* divide_;
-  Small* small_;
-  SolveSmall* solve_small_;
+ protected:
+  virtual bool small(const Instance*) const = 0;
+  virtual Solution* solveSmall(const Instance* I) const = 0;
+  virtual InstanceHalves divide(const Instance*, const int&) const = 0;
+  virtual Solution* combine(const Solution* I1, const Solution* I2) const = 0;
 };
 
 Solution* DivideConquer::solve(const Instance* I, const int& size) const {
-  if (small_->small(I)) 
-    return solve_small_->solveSmall(I);
+  if (small(I)) 
+    return solveSmall(I);
   else {
-    InstanceHalves m = divide_->divide(I, size);
+    InstanceHalves m = divide(I, size);
     Solution* S1 = solve(m.first, size / 2);
     Solution* S2 = solve(m.second, size / 2);
-    Solution* S = combine_->combine(S1, S2);
+    Solution* S = combine(S1, S2);
+    delete m.first;
+    delete m.second;
     delete S1;
     delete S2;
     return S;

@@ -16,8 +16,9 @@
 #include "instance.h"
 #include "solution.h"
 
-#include "divide_conquer_part2.h"
 #include "instance_part2.h"
+#include "solver.h"
+#include "divide_conquer_part2.h"
 #include "solution_part2.h"
 
 #include <exception>
@@ -39,11 +40,15 @@ int main(int argc, char* argv[]) {
 
     Instance* instance = new InstancePart2();
     instance->loadFile(std::string(argv[1]));
-    DivideConquer* solver = new DivideConquerPart2();
-    Solution* solution = solver->solve(instance);
-    delete solver;
+
+    Solver* solver = new Solver(instance);
+    solver->setStrategy(new DivideConquerPart2());
+
+    Solution* solution = solver->executeStrategy();
     solution->saveFile(std::string(argv[2]));
+
     delete instance;
+    delete solver;
     delete solution;
 
   } catch (const std::exception& e) {
