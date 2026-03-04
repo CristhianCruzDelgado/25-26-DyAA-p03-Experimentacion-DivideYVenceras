@@ -11,14 +11,24 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef SOLUTION_H_
-#define SOLUTION_H_
+#ifndef LOADER_EMPLOYEE_DAY_SHIFT_H_
+#define LOADER_EMPLOYEE_DAT_SHIFT_H_
 
+#include "loader.h"
+
+#include <fstream>
+#include <stdexcept>
+#include <string>
 #include <vector>
+#include <nlohmann/json.hpp>
 
-class Solution {
+using json = nlohmann::json;
+
+class Instance;
+
+class LoaderEmployeeDayShift : public Loader {
  public:
-  virtual ~Solution() = default;
+  Instance* load(const std::string&) const override;
 };
 
 #endif

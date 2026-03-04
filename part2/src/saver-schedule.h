@@ -11,17 +11,24 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef INSTANCE_H_
-#define INSTANCE_H_
+#ifndef SAVER_SCHEDULE_H_
+#define SAVER_SCHEDULE_H_
 
-class Algorithm;
+#include "saver.h"
+
+#include <fstream>
+#include <stdexcept>
+#include <string>
+#include <vector>
+#include <nlohmann/json.hpp>
+
+using json = nlohmann::json;
+
 class Solution;
 
-class Instance {
+class SaverSchedule : public Saver {
  public:
-  virtual ~Instance() = default;
-  virtual void setAlgorithm(Algorithm*) = 0;
-  virtual Solution* execute() = 0;
+  void save(Solution* s1, const std::string& path) const override;
 };
 
 #endif

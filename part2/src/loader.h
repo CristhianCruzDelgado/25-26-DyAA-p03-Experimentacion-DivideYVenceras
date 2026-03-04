@@ -11,17 +11,17 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef INSTANCE_H_
-#define INSTANCE_H_
+#ifndef LOADER_H_
+#define LOADER_H_
 
-class Algorithm;
-class Solution;
+#include <string>
 
-class Instance {
+class Instance;
+
+class Loader {
  public:
-  virtual ~Instance() = default;
-  virtual void setAlgorithm(Algorithm*) = 0;
-  virtual Solution* execute() = 0;
+  virtual ~Loader() = default;
+  virtual Instance* load(const std::string&) const = 0;
 };
 
 #endif

@@ -14,14 +14,13 @@
 #ifndef INSTANCE_H_
 #define INSTANCE_H_
 
-class Algorithm;
-class Solution;
+#include <string>
 
 class Instance {
  public:
   virtual ~Instance() = default;
-  virtual void setAlgorithm(Algorithm*) = 0;
-  virtual Solution* execute() = 0;
+  virtual const int getSize() const = 0;
+  virtual void loadFile(const std::string&) = 0;
 };
 
 #endif

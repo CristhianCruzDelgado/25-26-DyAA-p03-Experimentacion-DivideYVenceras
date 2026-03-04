@@ -11,17 +11,15 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef INSTANCE_H_
-#define INSTANCE_H_
+#ifndef SOLUTION_H_
+#define SOLUTION_H_
 
-class Algorithm;
-class Solution;
+#include <string>
 
-class Instance {
+class Solution {
  public:
-  virtual ~Instance() = default;
-  virtual void setAlgorithm(Algorithm*) = 0;
-  virtual Solution* execute() = 0;
+  virtual ~Solution() = default;
+  virtual void saveFile(const std::string&) const = 0;
 };
 
 #endif

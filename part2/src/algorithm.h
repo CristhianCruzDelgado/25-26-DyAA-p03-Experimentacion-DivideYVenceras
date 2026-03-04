@@ -11,17 +11,16 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef INSTANCE_H_
-#define INSTANCE_H_
+#ifndef ALGORITHM_H_
+#define ALGORITHM_H_
 
-class Algorithm;
+class Instance;
 class Solution;
 
-class Instance {
+class Algorithm {
  public:
-  virtual ~Instance() = default;
-  virtual void setAlgorithm(Algorithm*) = 0;
-  virtual Solution* execute() = 0;
+  virtual ~Algorithm() = default;
+  virtual Solution* solve(Instance*, int) const = 0;
 };
 
 #endif

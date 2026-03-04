@@ -25,16 +25,16 @@ class DivideConquer {
  public:
   virtual ~DivideConquer() = default;
   
-  Solution* solve(const Instance*, const int&) const;
+  Solution* solve(Instance*, const int&) const;
 
  protected:
-  virtual bool small(const Instance*) const = 0;
-  virtual Solution* solveSmall(const Instance* I) const = 0;
-  virtual InstanceHalves divide(const Instance*, const int&) const = 0;
-  virtual Solution* combine(const Solution* I1, const Solution* I2) const = 0;
+  virtual bool small(Instance*) const = 0;
+  virtual Solution* solveSmall(Instance* I) const = 0;
+  virtual InstanceHalves divide(Instance*, const int&) const = 0;
+  virtual Solution* combine(Solution* I1, Solution* I2) const = 0;
 };
 
-Solution* DivideConquer::solve(const Instance* I, const int& size) const {
+Solution* DivideConquer::solve(Instance* I, const int& size) const {
   if (small(I)) 
     return solveSmall(I);
   else {

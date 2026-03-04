@@ -13,6 +13,12 @@ include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 # Source files
 set(SOURCES
     src/main.cc
+    src/divide-conquer.cc
+    src/employees-days-shifts.cc
+    src/loader-employee-day-shift.cc
+    src/plan-employees.cc
+    src/saver-schedule.cc
+    src/schedule.cc
 )
 
 # Executable

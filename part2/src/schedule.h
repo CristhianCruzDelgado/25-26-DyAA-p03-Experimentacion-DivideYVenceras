@@ -11,17 +11,20 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef INSTANCE_H_
-#define INSTANCE_H_
+#ifndef SCHEDULE_H_
+#define SCHEDULE_H_
 
-class Algorithm;
-class Solution;
+#include "solution.h"
 
-class Instance {
+#include <vector>
+
+class Schedule : public Solution {
  public:
-  virtual ~Instance() = default;
-  virtual void setAlgorithm(Algorithm*) = 0;
-  virtual Solution* execute() = 0;
+  const std::vector<std::vector<std::vector<bool>>>& getSchedule() const;
+  
+ private:
+  // x[e][d][s] = 1 if employee e works on day d for shift s, 0 otherwise
+  std::vector<std::vector<std::vector<bool>>> schedule_;  
 };
 
 #endif

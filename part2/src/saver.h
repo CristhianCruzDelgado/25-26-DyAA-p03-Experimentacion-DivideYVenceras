@@ -11,17 +11,17 @@
  *   alu0101651217@ull.edu.es
  */
 
-#ifndef INSTANCE_H_
-#define INSTANCE_H_
+#ifndef SAVER_H_
+#define SAVER_H_
 
-class Algorithm;
+#include <string>
+
 class Solution;
 
-class Instance {
+class Saver {
  public:
-  virtual ~Instance() = default;
-  virtual void setAlgorithm(Algorithm*) = 0;
-  virtual Solution* execute() = 0;
+  virtual ~Saver() = default;
+  virtual void save(Solution*, const std::string&) const = 0;
 };
 
 #endif
