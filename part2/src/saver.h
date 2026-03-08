@@ -16,12 +16,13 @@
 
 #include <string>
 
+class Instance;
 class Solution;
 
 class Saver {
  public:
   virtual ~Saver() = default;
-  virtual void save(Solution*, const std::string&) const = 0;
+  virtual void save(Instance*, Solution*, const std::string&) const = 0;
 };
 
 #endif

@@ -11,8 +11,12 @@
  *   alu0101651217@ull.edu.es
  */
 
+#ifndef EMPLOYEES_DAYS_SHIFTS_H_
+#define EMPLOYEES_DAYS_SHIFTS_H_
+
 #include "instance.h"
 
+#include <iostream>
 #include <stdexcept>
 #include <string>
 #include <vector>
@@ -31,8 +35,19 @@ class EmployeesDaysShifts : public Instance {
   void setAlgorithm(Algorithm*) override;
   Solution* execute() override;
 
+  const std::vector<Employee>& getEmployees() const;
+  int getDays() const;
+  const std::vector<Shift>& getShifts() const;
+  std::vector<std::vector<std::vector<int>>> getFromToDaysFromA(int, int) const;
+  std::vector<std::vector<int>> getFromToDaysFromB(int, int) const;
+  const std::vector<std::vector<std::vector<int>>>& getA() const;
+  const std::vector<std::vector<int>>& getB() const;
+  const std::vector<int>& getC() const;
+
+  void displayOnConsole() const;
+
  private:
-  std::vector<Employee> E_; // Employess
+  std::vector<Employee> E_; // Employees
   int D_;                   // Days
   std::vector<Shift> S_;    // Shifts
   // A[e][d][s]             // Satisfaction of employee [e] on day [d] for shift [s]
@@ -44,3 +59,5 @@ class EmployeesDaysShifts : public Instance {
   // Algorithm
   Algorithm* algorithm_;
 };
+
+#endif

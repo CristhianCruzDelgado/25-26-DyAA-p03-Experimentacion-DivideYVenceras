@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
     in->setAlgorithm(al);
     Solution* so = in->execute();
     Saver* sa = new SaverSchedule();
-    sa->save(so, std::string(argv[2]));
+    sa->save(in, so, std::string(argv[2]));
 
     delete lo;
     delete in;

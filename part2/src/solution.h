@@ -14,11 +14,12 @@
 #ifndef SOLUTION_H_
 #define SOLUTION_H_
 
-#include <vector>
+class Instance;
 
 class Solution {
  public:
   virtual ~Solution() = default;
+  virtual double objectiveFunction(Instance*) const = 0;
 };
 
 #endif

@@ -18,10 +18,19 @@
 
 #include <vector>
 
+class EmployeesDaysShifts;
+class Instance;
+
 class Schedule : public Solution {
  public:
+  Schedule(std::vector<std::vector<std::vector<bool>>>);
+
   const std::vector<std::vector<std::vector<bool>>>& getSchedule() const;
-  
+
+  double calculateSatisfaction(EmployeesDaysShifts*) const;
+  int countCoveredShifts(EmployeesDaysShifts*) const;
+  double objectiveFunction(Instance*) const override;
+
  private:
   // x[e][d][s] = 1 if employee e works on day d for shift s, 0 otherwise
   std::vector<std::vector<std::vector<bool>>> schedule_;  

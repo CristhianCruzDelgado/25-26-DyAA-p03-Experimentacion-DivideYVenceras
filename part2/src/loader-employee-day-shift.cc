@@ -5,7 +5,7 @@ Instance* LoaderEmployeeDayShift::load(const std::string& path) const {
   std::ifstream file(path);
   if (!file) { throw std::runtime_error("Bad input file: " + path); }
 
-  json j;
+  nlohmann::json j;
   file >> j;
 
   int numS = j["shifts"].size();

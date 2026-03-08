@@ -22,13 +22,12 @@
 #include <vector>
 #include <nlohmann/json.hpp>
 
-using json = nlohmann::json;
-
+class Instance;
 class Solution;
 
 class SaverSchedule : public Saver {
  public:
-  void save(Solution* s1, const std::string& path) const override;
+  void save(Instance*, Solution*, const std::string&) const override;
 };
 
 #endif

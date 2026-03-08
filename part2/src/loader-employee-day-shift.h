@@ -12,7 +12,7 @@
  */
 
 #ifndef LOADER_EMPLOYEE_DAY_SHIFT_H_
-#define LOADER_EMPLOYEE_DAT_SHIFT_H_
+#define LOADER_EMPLOYEE_DAY_SHIFT_H_
 
 #include "loader.h"
 
@@ -21,8 +21,6 @@
 #include <string>
 #include <vector>
 #include <nlohmann/json.hpp>
-
-using json = nlohmann::json;
 
 class Instance;
 

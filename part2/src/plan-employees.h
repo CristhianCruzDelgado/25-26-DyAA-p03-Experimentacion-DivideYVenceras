@@ -14,9 +14,12 @@
 #ifndef PLAN_EMPLOYEES_H_
 #define PLAN_EMPLOYEES_H_
 
-#include "divide-conquer.h" // algorithm
+#include "divide-conquer.h"
 
+#include <algorithm>
+#include <iostream>
 #include <stdexcept>
+#include <utility>
 
 class Instance;
 class Solution;
