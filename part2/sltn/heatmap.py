@@ -4,7 +4,8 @@ import numpy as np
 from matplotlib.patches import Patch
 
 # Cargar el JSON
-with open("solution.json", "r") as f:
+# "solution_horizonX_employeesX_shifX_00[0|1].json"
+with open("solution_horizon30_employees30_shifts20_001.json", "r") as f:
     data = json.load(f)
 
 schedule = data["schedule"]
@@ -30,10 +31,10 @@ plt.figure(figsize=(10, 6))
 plt.imshow(heatmap, cmap=cmap, origin="upper", aspect="auto")
 
 # Ejes
-plt.xticks(ticks=np.arange(numD), labels=[f"Day {d}" for d in range(numD)])
+plt.xticks(ticks=np.arange(numD), labels=[f"Day {d + 1}" for d in range(numD)])
 plt.yticks(ticks=np.arange(numE), labels=[f"Employee {e}" for e in range(numE)])
-plt.xlabel("Days")
-plt.ylabel("Name")
+plt.xlabel("Weeks")
+plt.ylabel("Names")
 title = "Employee Shift Planning"
 if objective_value is not None:
     title += f" | Objective: {objective_value:.2f}"
@@ -47,7 +48,7 @@ legend_elements = [
 plt.legend(handles=legend_elements, bbox_to_anchor=(1.05, 1), loc='upper left')
 
 plt.tight_layout()
-plt.savefig("heatmap.png", dpi=300)  # guarda la imagen
+plt.savefig("heatmap3020201.png", dpi=300)  # guarda la imagen
 plt.show()
 print("Heatmap guardado en heatmap.png")
 if objective_value is not None:

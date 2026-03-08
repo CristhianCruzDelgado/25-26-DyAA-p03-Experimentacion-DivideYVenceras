@@ -1,0 +1,300 @@
+{
+  "active": [
+    {
+      "day": 4,
+      "employee": 0,
+      "shift": 0
+    },
+    {
+      "day": 5,
+      "employee": 0,
+      "shift": 2
+    },
+    {
+      "day": 6,
+      "employee": 0,
+      "shift": 2
+    },
+    {
+      "day": 4,
+      "employee": 2,
+      "shift": 2
+    },
+    {
+      "day": 5,
+      "employee": 2,
+      "shift": 0
+    },
+    {
+      "day": 6,
+      "employee": 2,
+      "shift": 1
+    },
+    {
+      "day": 0,
+      "employee": 3,
+      "shift": 1
+    },
+    {
+      "day": 0,
+      "employee": 3,
+      "shift": 2
+    },
+    {
+      "day": 1,
+      "employee": 3,
+      "shift": 0
+    },
+    {
+      "day": 1,
+      "employee": 3,
+      "shift": 2
+    },
+    {
+      "day": 2,
+      "employee": 3,
+      "shift": 1
+    },
+    {
+      "day": 2,
+      "employee": 3,
+      "shift": 2
+    },
+    {
+      "day": 3,
+      "employee": 3,
+      "shift": 0
+    },
+    {
+      "day": 3,
+      "employee": 3,
+      "shift": 2
+    },
+    {
+      "day": 0,
+      "employee": 4,
+      "shift": 0
+    },
+    {
+      "day": 1,
+      "employee": 4,
+      "shift": 1
+    },
+    {
+      "day": 2,
+      "employee": 4,
+      "shift": 0
+    },
+    {
+      "day": 3,
+      "employee": 4,
+      "shift": 1
+    },
+    {
+      "day": 4,
+      "employee": 4,
+      "shift": 1
+    },
+    {
+      "day": 5,
+      "employee": 4,
+      "shift": 1
+    },
+    {
+      "day": 6,
+      "employee": 4,
+      "shift": 0
+    }
+  ],
+  "days": 7,
+  "employees": 5,
+  "objective_function": 2272.0,
+  "schedule": [
+    [
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        true,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        true
+      ],
+      [
+        false,
+        false,
+        true
+      ]
+    ],
+    [
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ]
+    ],
+    [
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        true
+      ],
+      [
+        true,
+        false,
+        false
+      ],
+      [
+        false,
+        true,
+        false
+      ]
+    ],
+    [
+      [
+        false,
+        true,
+        true
+      ],
+      [
+        true,
+        false,
+        true
+      ],
+      [
+        false,
+        true,
+        true
+      ],
+      [
+        true,
+        false,
+        true
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ],
+      [
+        false,
+        false,
+        false
+      ]
+    ],
+    [
+      [
+        true,
+        false,
+        false
+      ],
+      [
+        false,
+        true,
+        false
+      ],
+      [
+        true,
+        false,
+        false
+      ],
+      [
+        false,
+        true,
+        false
+      ],
+      [
+        false,
+        true,
+        false
+      ],
+      [
+        false,
+        true,
+        false
+      ],
+      [
+        true,
+        false,
+        false
+      ]
+    ]
+  ],
+  "shifts": 3
+}

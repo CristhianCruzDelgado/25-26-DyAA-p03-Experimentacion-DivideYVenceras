@@ -8,6 +8,16 @@ bool PlanEmployees::small(Instance* I) const {
   return E->getDays() == 1;
 }
 
+int assigemntsOfEmployee(int e, const std::vector<std::vector<std::vector<bool>>>& schedule) {
+  int count = 0;
+  int numD = schedule[0].size();
+  int numS = schedule[0][0].size();
+  for (int d = 0; d < numD; ++d)
+    for (int s = 0; s < numS; ++s)
+      count += schedule[e][d][s];
+  return count;
+}
+
 Solution* PlanEmployees::solveSmall(Instance* I) const {
   EmployeesDaysShifts* E = dynamic_cast<EmployeesDaysShifts*>(I); 
   if (!E) throw std::runtime_error("Bad pointer: instance null. PlanEmployees::solveSmall");
@@ -17,30 +27,28 @@ Solution* PlanEmployees::solveSmall(Instance* I) const {
   E->displayOnConsole();
   // }
 
-  int numD = E->getDays();
+  int numD = EmployeesDaysShifts::getRealSize();
   int numE = E->getEmployees().size();
   int numS = E->getShifts().size();
-  std::vector<std::vector<std::vector<bool>>> sch(numE, std::vector<std::vector<bool>>(numD, std::vector<bool>(numS, false)));
-  for (int d = 0; d < numD; ++d) {
-    for (int s = 0; s < numS; ++s) {
-      int required = E->getB()[d][s];
+  std::vector<std::vector<std::vector<bool>>> sch(numE, std::vector<std::vector<bool>>(1, std::vector<bool>(numS, false)));
+  for (int s = 0; s < numS; ++s) {
+    int required = E->getB()[0][s];
 
-      std::vector<std::pair<int,int>> candidates;
-      for (int e = 0; e < numE; ++e) {
-        if (E->getC()[e] == 0) continue; 
-        candidates.push_back({E->getA()[e][d][s], e});
-      }
+    std::vector<std::pair<int,int>> candidates;
+    for (int e = 0; e < numE; ++e) {
+      if (numD - assigemntsOfEmployee(e, sch) == E->getC()[e]) continue; 
+      candidates.push_back({E->getA()[e][0][s], e});
+    }
 
-      // Sort by descending satisfaction
-      std::sort(candidates.begin(), candidates.end(), std::greater<>());
+    // Sort by descending satisfaction
+    std::sort(candidates.begin(), candidates.end(), std::greater<>());
 
-      int assigned = 0;
-      for (std::pair<int,int>& p : candidates) {
-        if (assigned == required) break;
-        int e = p.second;
-        sch[e][d][s] = true;
-        ++assigned;
-      }
+    int assigned = 0;
+    for (std::pair<int,int>& p : candidates) {
+      if (assigned == required) break;
+      int e = p.second;
+      sch[e][0][s] = true;
+      ++assigned;
     }
   }
   return new Schedule(sch);

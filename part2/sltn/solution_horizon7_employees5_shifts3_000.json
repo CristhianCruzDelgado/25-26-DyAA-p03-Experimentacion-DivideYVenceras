@@ -1,6 +1,11 @@
 {
   "active": [
     {
+      "day": 3,
+      "employee": 0,
+      "shift": 1
+    },
+    {
       "day": 1,
       "employee": 1,
       "shift": 0
@@ -79,11 +84,6 @@
       "day": 3,
       "employee": 4,
       "shift": 0
-    },
-    {
-      "day": 3,
-      "employee": 4,
-      "shift": 1
     },
     {
       "day": 5,
@@ -108,7 +108,7 @@
   ],
   "days": 7,
   "employees": 5,
-  "objective_function": 2263.0,
+  "objective_function": 2267.0,
   "schedule": [
     [
       [
@@ -128,7 +128,7 @@
       ],
       [
         false,
-        false,
+        true,
         false
       ],
       [
@@ -276,7 +276,7 @@
       ],
       [
         true,
-        true,
+        false,
         false
       ],
       [

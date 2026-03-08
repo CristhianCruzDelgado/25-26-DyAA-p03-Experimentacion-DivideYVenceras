@@ -11,15 +11,10 @@ double Schedule::calculateSatisfaction(EmployeesDaysShifts* E) const {
   int numD = E->getDays();
   int numS = E->getShifts().size();
   const auto& A = E->getA();
-  for (int e = 0; e < numE; ++e) {
-    for (int d = 0; d < numD; ++d) {
-      for (int s = 0; s < numS; ++s) {
-        if (schedule_[e][d][s]) {
-          sumSatisfaction += A[e][d][s];
-        }
-      }
-    }
-  }
+  for (int e = 0; e < numE; ++e) 
+    for (int d = 0; d < numD; ++d) 
+      for (int s = 0; s < numS; ++s) 
+        if (schedule_[e][d][s]) sumSatisfaction += A[e][d][s];
   return sumSatisfaction;
 }
 
@@ -32,9 +27,8 @@ int Schedule::countCoveredShifts(EmployeesDaysShifts* E) const {
   for (int d = 0; d < numD; ++d) {
     for (int s = 0; s < numS; ++s) {
       int assigned = 1;
-      for (int e = 0; e < numE; ++e) {
+      for (int e = 0; e < numE; ++e)
         if (schedule_[e][d][s]) ++assigned;
-      }
       if (assigned > B[d][s]) ++countShifts;
     }
   }

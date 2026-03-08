@@ -32,4 +32,4 @@ target_link_libraries(planificar-empleados nlohmann_json::nlohmann_json)
 # 2. cd build
 # 3. cmake ..
 # 4. make
-# 5. ./planificar-empleados arg1 arg2
+# 5. ./planificar-empleados --help

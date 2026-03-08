@@ -43,6 +43,7 @@ class EmployeesDaysShifts : public Instance {
   const std::vector<std::vector<std::vector<int>>>& getA() const;
   const std::vector<std::vector<int>>& getB() const;
   const std::vector<int>& getC() const;
+  static int getRealSize() { return realSize_; }
 
   void displayOnConsole() const;
 
@@ -58,6 +59,7 @@ class EmployeesDaysShifts : public Instance {
   std::vector<int> C_;
   // Algorithm
   Algorithm* algorithm_;
+  static int realSize_;
 };
 
 #endif

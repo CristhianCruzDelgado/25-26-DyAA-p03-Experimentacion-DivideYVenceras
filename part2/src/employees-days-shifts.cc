@@ -1,11 +1,15 @@
 #include "algorithm.h" // algorithm
 #include "employees-days-shifts.h" // declaration
 
+int EmployeesDaysShifts::realSize_ = -1;
+
 EmployeesDaysShifts::EmployeesDaysShifts(
   std::vector<Employee> E, int D, std::vector<Shift> S,
   std::vector<std::vector<std::vector<int>>> A, std::vector<std::vector<int>> B, std::vector<int> C    
 ) : E_(std::move(E)), D_(D), S_(std::move(S)), 
-    A_(std::move(A)), B_(std::move(B)), C_(std::move(C)), algorithm_(nullptr) {}
+    A_(std::move(A)), B_(std::move(B)), C_(std::move(C)), algorithm_(nullptr) {
+  if (realSize_ == -1) realSize_ = D;
+}
 
 void EmployeesDaysShifts::setAlgorithm(Algorithm* a) { 
   if(!a) throw std::invalid_argument("Bad pointer: algorithm null. EmployeesDaysShifts::setAlgorithm");
