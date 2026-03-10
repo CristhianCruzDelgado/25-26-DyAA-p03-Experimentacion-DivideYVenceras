@@ -1,0 +1,20 @@
+/**
+ * Universidad de La Laguna
+ * Degree: Ingeniería Informática
+ * Signature: Diseño y Análisis de Algoritmos
+ * Practice 03: Experimentación con Divide y Vencerás
+ * Authors: 
+ *   Cristhian Adoney Cruz Delgado
+ *   Michelangelo Da Cruz Bochicchio
+ * Emails: 
+ *   alu0101648293@ull.edu.es
+ *   alu0101651217@ull.edu.es
+ */
+
+#include "sorting_instance.h"
+#include "sorting_solution.h"
+#include "sorting_instance_generator.h"
+#include "mergesort.h"
+#include "quicksort.h"
+#include "execution_timer.h"
+#include "execution_context.h"
