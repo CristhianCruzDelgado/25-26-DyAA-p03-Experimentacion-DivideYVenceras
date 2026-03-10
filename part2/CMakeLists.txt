@@ -4,9 +4,6 @@ project(EmployeeScheduling)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find nlohmann_json
-find_package(nlohmann_json REQUIRED)
-
 # Include directories
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
@@ -25,7 +22,8 @@ set(SOURCES
 add_executable(planificar-empleados ${SOURCES})
 
 # Link libraries
-target_link_libraries(planificar-empleados nlohmann_json::nlohmann_json)
+add_subdirectory(json)
+target_link_libraries(planificar-empleados PRIVATE nlohmann_json::nlohmann_json)
 
 # Instructions
 # 1. mkdir build
